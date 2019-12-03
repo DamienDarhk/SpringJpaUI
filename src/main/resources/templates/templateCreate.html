@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Update</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+  <link href="Css/templateCreate.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div class="container">
+    <form id="contact" th:action="@{/saveCustomer}" method="POST" th:object="${customer}">
+      <h2>User <b>Creating New</b></h2><br>
+      <!-- <h4>Please correct your information</h4> -->
+      <fieldset>
+        <input th:field="*{full_name}" placeholder="Your name" type="text" tabindex="1" required autofocus >
+      </fieldset>
+
+      <fieldset>
+        <input th:field="*{address}" placeholder="Your Address" type="text" tabindex="2" required >
+      </fieldset>
+
+      <fieldset>
+        <input th:field="*{email}" placeholder="Your Email" type="email" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <input th:field="*{phone}" placeholder="Your Phone Number" type="tel" tabindex="4" required>
+      </fieldset>
+
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      </fieldset>
+    </form>
+  </div>
+</body>
+
+</html>

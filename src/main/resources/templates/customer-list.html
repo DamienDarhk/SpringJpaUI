@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="../static/Css/customer-list.css" th:href="@{/Css/customer-list.css}" rel="stylesheet" />
+	<!-- <script type="text/javascript">
+		$(document).ready(function() {
+			$('[data-toggle="tooltip"]').tooltip();
+		});
+	</script> -->
+</head>
+
+<body>
+	<div class="container">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
+					<div class="col-sm-5">
+						<h2>User <b>Management</b></h2>
+					</div>
+					<div class="col-sm-7">
+						<a th:href="@{/customer-save}" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Add Customer</span></a>
+						<a href="#" class="btn btn-primary"><i class="material-icons">&#xE24D;</i> <span>Export to Excel</span></a>
+					</div>
+				</div>
+			</div>
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Address</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<th:block th:each="customer : ${listCustomer}">
+					<tr>
+						<td>
+							<p th:text="${customer.id}"></p>
+						</td>
+						<td>
+							<p th:text="${customer.full_name}">
+								<p />
+						</td>
+						<td>
+							<p th:text="${customer.address}"></p>
+						</td>
+						<td>
+							<p th:text="${customer.email}"></p>
+						</td>
+						<td>
+							<p th:text="${customer.phone}"></p>
+						</td>
+						<td>
+							<a th:href="@{/customer-view/} + ${customer.id}" class="settings" title="View" data-toggle="tooltip"><i class="material-icons">&#xe417;</i></a>
+							<a th:href="@{/customer-update/} + ${customer.id}" class="settings" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a>
+							<a th:href="@{/customerDelete/} + ${customer.id}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+						</td>
+					</tr>
+				</th:block>
+			</table>
+			<div class="clearfix">
+				<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+				<ul class="pagination">
+					<li class="page-item disabled"><a href="#">Previous</a></li>
+					<li class="page-item"><a href="#" class="page-link">1</a></li>
+					<li class="page-item"><a href="#" class="page-link">2</a></li>
+					<li class="page-item active"><a href="#" class="page-link">3</a></li>
+					<li class="page-item"><a href="#" class="page-link">4</a></li>
+					<li class="page-item"><a href="#" class="page-link">5</a></li>
+					<li class="page-item"><a href="#" class="page-link">Next</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
